@@ -1,3 +1,5 @@
+import userData from '../fixtures/userData.json'
+
 describe('Oranges HRM tests', () => {
 
 const selectorsList = {
@@ -21,7 +23,7 @@ password: 'admin123'
 }
 
   it('Login - sucess', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectorsList.usernameField).type(userData.userSucess.username)
     cy.get(selectorsList.passwordField).type(userData.userSucess.password)
     cy.get(selectorsList.loginButton).click()
@@ -29,7 +31,7 @@ password: 'admin123'
     cy.get(selectorsList.dashboardGrid)
   })
   it('Login - Fail', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectorsList.usernameField).type(userData.userFail.username)
     cy.get(selectorsList.passwordField).type(userData.userFail.password)
     cy.get(selectorsList.loginButton).click()
